@@ -5,14 +5,21 @@ sudo apt install -y stress
 # test용 cgroup 생성
 sudo su
 cd /sys/fs/cgroup/cpu
+
+# 별도의 테스트 환경을 구축하기 위해서 파일을 생성함.
+# 파일 생성시 자동으로 파일들이 생성됨.
 mkdir utils
 cd utils
+
+# 현재 터미널의 PID를 태스크로 등록
 echo $$ > tasks
 
-# cfs quota 설정
+# cfs quota 설정 
+# period_us 값은 기본적으로 100ms로 설정되어 있음.
 echo 10000 > cpu.cfs_quota_us
 
 # stress test 실행
+# -c cpu의 부하를 최대로 테스트함
 stress -c 1
 
 # 새로운 창에서 CPU 사용량 정보 확인
