@@ -1,6 +1,8 @@
 # test용 cgroup 생성
 sudo su
+
 cd /sys/fs/cgroup/pids
+
 mkdir police
 cd police
 echo $$ > tasks
